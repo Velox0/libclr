@@ -1,12 +1,12 @@
 <div align="center">
 <img width="60%" src="images/banner.svg"></img>
 <hr>
-<p>colourize text based on string pattern</p>
+<p>colourise text based on string pattern</p>
 </div>
 
 # What does it do
 
-Colourize any text stream with custom colours easily with string patterns
+Colourise any text stream with custom colours easily with string patterns
 
 # How to use colorizer
 
