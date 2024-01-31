@@ -1,5 +1,5 @@
 <div align="center">
-<img width="60%" src="images/banner.svg"></img>
+<img width="60%" src="images/banner.png"></img>
 <hr>
 <p>colourise text based on string pattern</p>
 </div>
@@ -18,4 +18,4 @@ stat image.png | clr red --after ": " green --reset-on "  "
 
 This will output the stdin in `red`. However, after encountering `": "` it will format the string to become `green`. Then it will again be reset to red after two consecutive spaces `"  "`.
 
-By default definition of the colours if red from `~/.config/colourizer/preset`
+By default definition of the colours if read from `~/.config/colourizer/preset`
