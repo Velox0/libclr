@@ -24,21 +24,21 @@ void display(char *str, int colour[]) {
   return;
 }
 
-char getoption(char *ch) {
-  if (ch[1] != '-')
-    return ch[1];
-  char *options[] = {"from", "after", "reset-on", "version", "help"};
+char getoption(char *opt) {
+  if (opt[1] != '-')
+    return opt[1];
+  char *long_options[] = {"from", "after", "reset-on", "version", "help"};
 
-  char shortoptions[] = "farvh";
+  char short_options[] = "farvh";
 
-  int HOWMANYOPTIONS = sizeof(shortoptions) / sizeof(char) - 1;
+  int HOWMANYOPTIONS = sizeof(short_options) / sizeof(char) - 1;
 
   for (int i = 0; i < HOWMANYOPTIONS; i++) {
-    for (int j = 2; ch[j]; j++) {
-      if (ch[j] != options[i][j - 2])
+    for (int j = 2; opt[j]; j++) {
+      if (opt[j] != long_options[i][j - 2])
         break;
-      if (!ch[j + 1] && !options[i][j - 1])
-        return shortoptions[i];
+      if (!opt[j + 1] && !long_options[i][j - 1])
+        return short_options[i];
     }
   }
   return '\0';

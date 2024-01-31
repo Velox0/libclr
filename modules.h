@@ -1,3 +1,3 @@
-void help();
+void help(char arg[]);
 void display(char str[], int colour[]);
-char getoption(char *ch);
+char getoption(char *opt);
