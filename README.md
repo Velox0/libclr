@@ -1,5 +1,9 @@
 <div align="center">
+<img height="20" src="https://img.icons8.com/dusk/64/wrench.png" alt="wrench"/>
+Currently a work in progress
+
 <img width="60%" src="images/banner.png"></img>
+
 <hr>
 <p>colourise text based on string pattern</p>
 </div>
