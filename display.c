@@ -12,5 +12,15 @@ void display24(char *str, colour24 colour) {
   printf("%s", str);
   // Reset formatting
   printf("%s", normal);
-  return;
+}
+
+void display8(char *str, colour8 colour) {
+  char normal[] = "\033[0;0m";
+  // "Activate" formatting by printing escape code
+  printf("\033[38;%d;%d;48;%d;%dm", colour.format[FCID8], colour.format[FN],
+         colour.format[BCID8], colour.format[BN]);
+  // Print string
+  printf("%s", str);
+  // Reset formatting
+  printf("%s", normal);
 }

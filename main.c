@@ -31,10 +31,5 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  for (int i = 1; i < argc; i++) {
-    display24(argv[i], colour_list[RED]);
-    printf("\n");
-  }
-
   return 0;
 }
