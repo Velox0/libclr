@@ -18,21 +18,38 @@
 */
 typedef union {
   unsigned char format[8];
-} colour;
+} colour24;
 
 /*
-  instead of accessing colour.format[] elements with
-  numbers, use enum rgbindex for better maintainability
+  Similar to 24-bit colours, 8-bit follow the following pattern
+
+  \033[38 (FOREGROUND); [CSID] (0/5); [N] (0-255);
+       48 (BACKGROUND); [CSID] (0/5); [N] (0-255);
 */
-enum rgbindex {
-  FR,     // foreground red
-  FG,     // foreground green
-  FB,     // foreground blue
-  FSTYLE, // foreground colour space id
-  BR,     // background red
-  BG,     // background green
-  BB,     // background blue
-  BSTYLE  // background colour space id
+typedef union {
+  unsigned char format[4];
+} colour8;
+
+/*
+  instead of accessing colour24.format[] elements with
+  numbers, use enum rgb_index for better maintainability
+*/
+enum rgb_index {
+  FR,   // foreground red
+  FG,   // foreground green
+  FB,   // foreground blue
+  FCID, // foreground colour space id
+  BR,   // background red
+  BG,   // background green
+  BB,   // background blue
+  BCID  // background colour space id
+};
+
+enum eight_bit_index {
+  FN,    // foreground colour
+  FCID8, // foreground cid
+  BN,    // background colour
+  BCID8  // background cid
 };
 
 enum colour_index {

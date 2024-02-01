@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-  colour colour_list[24];
+  colour24 colour_list[24];
 
   colour_list[RED].format[FR] = 0xFF;
   colour_list[RED].format[FG] = 0;
@@ -12,8 +12,8 @@ int main(int argc, char *argv[]) {
   colour_list[RED].format[BG] = 0;
   colour_list[RED].format[BR] = 0;
   colour_list[RED].format[BB] = 0;
-  colour_list[RED].format[FSTYLE] = 2;
-  colour_list[RED].format[BSTYLE] = 0;
+  colour_list[RED].format[FCID] = 2;
+  colour_list[RED].format[BCID] = 0;
 
   for (int i = 1; i < argc; i++) {
     if (argv[i][0] != '-')
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
   }
 
   for (int i = 1; i < argc; i++) {
-    display(argv[i], colour_list[BRIGHT_WHITE]);
+    display24(argv[i], colour_list[RED]);
     printf("\n");
   }
 
