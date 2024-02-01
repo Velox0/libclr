@@ -12,7 +12,7 @@ Currently a work in progress
 
 Colourise any text stream with custom colours easily with string patterns
 
-# How to use colorizer
+# How to use colourizer
 
 The program will look for strings specified after arguments like --after --from and --reset-on and format them to the colour specified after. For example:
 

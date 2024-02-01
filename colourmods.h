@@ -2,14 +2,16 @@
 #define COLOURMODS
 
 /*
-  The colour union stores colour/formattiing information
+  The colour union stores colour/formatting information
   required for ANSI escape codes.
 
-  ANSI escape code for 8 bit foreground and background
-  formatting looks as follows
+  24-bit ANSI uses the following format of escape sequence
 
-  \033[38 (FOREGROUND); [ITALICS/BOLD...]; [R]; [G]; [B];
-          (BACKGROUND); [ITALICS/BOLD...]; [R]; [G]; [B] m
+  \033[38 (FOREGROUND); [COLOUR SPACE ID...]; [R]; [G]; [B];
+       48 (BACKGROUND); [COLOUR SPACE ID...]; [R]; [G]; [B] m
+
+  For more info check out:
+  https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit
 
   format[0-3] store foreground style + RGB values
   format[4-7] store foreground style + RGB values
@@ -18,7 +20,22 @@ typedef union {
   unsigned char format[8];
 } colour;
 
-enum ColourIndex {
+/*
+  instead of accessing colour.format[] elements with
+  numbers, use enum rgbindex for better maintainability
+*/
+enum rgbindex {
+  FR,     // foreground red
+  FG,     // foreground green
+  FB,     // foreground blue
+  FSTYLE, // foreground colour space id
+  BR,     // background red
+  BG,     // background green
+  BB,     // background blue
+  BSTYLE  // background colour space id
+};
+
+enum colour_index {
   BLACK,
   RED,
   GREEN,
@@ -43,17 +60,6 @@ enum ColourIndex {
   BACKGROUND_MAGENTA,
   BACKGROUND_CYAN,
   BACKGROUND_WHITE
-};
-
-enum rgbindex {
-  FR,     // foreground red
-  FG,     // foreground green
-  FB,     // foreground blue
-  FSTYLE, // foreground style [BOLD/ITALICS]
-  BR,     // background red
-  BG,     // background green
-  BB,     // background blue
-  BSTYLE  // background style [BOLD/ITALICS]
 };
 
 #endif

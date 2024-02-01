@@ -6,14 +6,14 @@
 int main(int argc, char *argv[]) {
   colour colour_list[24];
 
-  colour_list[BRIGHT_WHITE].format[FR] = 0xFF;
-  colour_list[BRIGHT_WHITE].format[FG] = 0;
-  colour_list[BRIGHT_WHITE].format[FB] = 0;
-  colour_list[BRIGHT_WHITE].format[BG] = 0;
-  colour_list[BRIGHT_WHITE].format[BR] = 0;
-  colour_list[BRIGHT_WHITE].format[BB] = 0;
-  colour_list[BRIGHT_WHITE].format[FSTYLE] = 2;
-  colour_list[BRIGHT_WHITE].format[BSTYLE] = 0;
+  colour_list[RED].format[FR] = 0xFF;
+  colour_list[RED].format[FG] = 0;
+  colour_list[RED].format[FB] = 0;
+  colour_list[RED].format[BG] = 0;
+  colour_list[RED].format[BR] = 0;
+  colour_list[RED].format[BB] = 0;
+  colour_list[RED].format[FSTYLE] = 2;
+  colour_list[RED].format[BSTYLE] = 0;
 
   for (int i = 1; i < argc; i++) {
     if (argv[i][0] != '-')
