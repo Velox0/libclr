@@ -1,3 +1,4 @@
+#include "colourmods.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -17,10 +18,14 @@ void help(char arg[]) {
   exit(0);
 }
 
-void display(char *str, int colour[]) {
+void display(char *str, colour colour) {
   char normal[] = "\033[0;0m";
-  printf("\033[38;2;%d;%d;%dm%s%s", colour[0], colour[1], colour[2], str,
-         normal);
+  printf("\033[38;%d;%d;%d;%d;48;%d;%d;%d;%dm", colour.format[FSTYLE],
+         colour.format[FR], colour.format[FG], colour.format[FB],
+         colour.format[BSTYLE], colour.format[BR], colour.format[BG],
+         colour.format[BB]);
+  printf("%s", str);
+  printf("%s", normal);
   return;
 }
 
