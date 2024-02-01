@@ -1,1 +1,1 @@
-#define CLRVERSION "v0.0.0"
+#define CLRVERSION "v0.0.1-GETTING-THERE"
