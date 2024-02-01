@@ -11,9 +11,8 @@
   \033[38 (FOREGROUND); [ITALICS/BOLD...]; [R]; [G]; [B];
           (BACKGROUND); [ITALICS/BOLD...]; [R]; [G]; [B] m
 
-  format[0-5] store RGB values that range from
-  0 to 255 (0xFF).
-  the style[ITALICS/BOLD...] information is stored in format[6]
+  format[0-3] store foreground style + RGB values
+  format[4-7] store foreground style + RGB values
 */
 typedef union {
   unsigned char format[8];
