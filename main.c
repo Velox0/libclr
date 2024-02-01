@@ -15,6 +15,10 @@ int main(int argc, char *argv[]) {
   colour_list[RED].format[FCID] = 2;
   colour_list[RED].format[BCID] = 0;
 
+  colour_list[YELLOW].format[FR] = 225;
+  colour_list[YELLOW].format[FG] = 225;
+  colour_list[YELLOW].format[FCID] = 2;
+
   for (int i = 1; i < argc; i++) {
     if (argv[i][0] != '-')
       continue;
@@ -23,7 +27,7 @@ int main(int argc, char *argv[]) {
     case 'r':
       break;
     case 'v':
-      printf(CLRVERSION "\n");
+      display24(CLRVERSION "\n", colour_list[YELLOW]);
       return 0;
     case 'h':
     default:
