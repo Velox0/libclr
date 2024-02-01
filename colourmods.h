@@ -17,6 +17,7 @@
   format[4-7] store foreground style + RGB values
 */
 typedef union {
+  unsigned long colour;
   unsigned char format[8];
 } colour24;
 
@@ -106,5 +107,13 @@ inline int getbg(basic_colour colour) {
   bg += bg < 8 ? 40 : 92;
   return bg;
 }
+
+void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
+                   unsigned char B);
+void setbgcolour24(colour24 *colour, unsigned char R, unsigned char G,
+                   unsigned char B);
+
+void resetfg24(colour24 *colour);
+void resetbg24(colour24 *colour);
 
 #endif
