@@ -31,6 +31,22 @@ typedef union {
 } colour8;
 
 /*
+  Most terminals at-least support 3-4bit colours. The following
+  is the required format:
+
+  \033[ [FOREGROUND COLOUR / BACKGROUND COLOUR] m
+  there are 16 available colours for foreground and background
+
+  Therefore all colour combinations can be stored in 2 hexadecimal
+  digits. The right hexadecimal is foreground and left is background
+  [FG][BG]
+
+  https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit
+*/
+
+typedef unsigned char basic_colour;
+
+/*
   instead of accessing colour24.format[] elements with
   numbers, use enum rgb_index for better maintainability
 */
@@ -78,5 +94,17 @@ enum colour_index {
   BACKGROUND_CYAN,
   BACKGROUND_WHITE
 };
+
+inline int getfg(basic_colour colour) {
+  int fg = colour % 16;
+  fg += fg < 8 ? 30 : 82;
+  return fg;
+}
+
+inline int getbg(basic_colour colour) {
+  int bg = colour / 16;
+  bg += bg < 8 ? 40 : 92;
+  return bg;
+}
 
 #endif
