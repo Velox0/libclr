@@ -4,17 +4,16 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-  enum ColourIndex colour_index = BLACK;
-  colour def[24];
+  colour colour_list[24];
 
-  def[BRIGHT_WHITE].format[FR] = 0xFF;
-  def[BRIGHT_WHITE].format[FG] = 0;
-  def[BRIGHT_WHITE].format[FB] = 0;
-  def[BRIGHT_WHITE].format[BG] = 0;
-  def[BRIGHT_WHITE].format[BR] = 0;
-  def[BRIGHT_WHITE].format[BB] = 0;
-  def[BRIGHT_WHITE].format[FSTYLE] = 2;
-  def[BRIGHT_WHITE].format[BSTYLE] = 0;
+  colour_list[BRIGHT_WHITE].format[FR] = 0xFF;
+  colour_list[BRIGHT_WHITE].format[FG] = 0;
+  colour_list[BRIGHT_WHITE].format[FB] = 0;
+  colour_list[BRIGHT_WHITE].format[BG] = 0;
+  colour_list[BRIGHT_WHITE].format[BR] = 0;
+  colour_list[BRIGHT_WHITE].format[BB] = 0;
+  colour_list[BRIGHT_WHITE].format[FSTYLE] = 2;
+  colour_list[BRIGHT_WHITE].format[BSTYLE] = 0;
 
   for (int i = 1; i < argc; i++) {
     if (argv[i][0] != '-')
@@ -33,7 +32,7 @@ int main(int argc, char *argv[]) {
   }
 
   for (int i = 1; i < argc; i++) {
-    display(argv[i], def[BRIGHT_WHITE]);
+    display(argv[i], colour_list[BRIGHT_WHITE]);
     printf("\n");
   }
 
