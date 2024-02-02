@@ -41,7 +41,7 @@ void basic_display(char *str, basic_colour colour, enum colour_index control) {
     break;
   default:
     basic_display("Error:", RED, NOBG);
-    printf("invalid control bit\n");
+    printf(" invalid control value (NOBG/NOGF/FULL)\n");
     return;
   }
   printf("%s", str);
