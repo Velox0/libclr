@@ -1,3 +1,4 @@
+#include <stdio.h>
 #ifndef COLOURMODS
 #define COLOURMODS
 
@@ -96,14 +97,17 @@ enum colour_index {
   BACKGROUND_WHITE
 };
 
-inline int getfg(basic_colour colour) {
-  int fg = colour % 16;
+/*
+  Remeber that basic_colour is just unsigned char
+*/
+inline basic_colour getfg(basic_colour colour) {
+  basic_colour fg = colour & 0xF;
   fg += fg < 8 ? 30 : 82;
   return fg;
 }
 
-inline int getbg(basic_colour colour) {
-  int bg = colour / 16;
+inline basic_colour getbg(basic_colour colour) {
+  basic_colour bg = colour >> 4;
   bg += bg < 8 ? 40 : 92;
   return bg;
 }
