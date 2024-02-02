@@ -1,6 +1,7 @@
-#include <stdio.h>
 #ifndef COLOURMODS
 #define COLOURMODS
+
+#include <stdio.h>
 
 /*
   The colour union stores colour/formatting information
