@@ -1,5 +1,6 @@
 #include "colourmods.h"
-#include "modules.h"
+#include "display.h"
+#include "options.h"
 #include "version.h"
 #include <stdio.h>
 
