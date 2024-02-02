@@ -44,6 +44,19 @@ typedef union {
   [FG][BG]
 
   https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit
+
+  To set to a color use the following method
+  basic_colour colour = 0x<BG><FG>
+
+  for example: basic_colour YELLOW_RED = 0x31
+  where left digit is background yellow and right digit is red
+
+  To find out what number gives what colour refer to the enum colour_index
+  where 0-16 all colours are on their respective indexes
+
+  you can also set colours as follows:
+  basic_colour example = RED (This will set the foreground colour red)
+               example += YELLOW * 16 (This will set background colour yellow)
 */
 
 typedef unsigned char basic_colour;
@@ -71,6 +84,7 @@ enum eight_bit_index {
 };
 
 enum colour_index {
+  // Colour index
   BLACK,
   RED,
   GREEN,
@@ -87,30 +101,16 @@ enum colour_index {
   BRIGHT_MAGENTA,
   BRIGHT_CYAN,
   BRIGHT_WHITE,
-  BACKGROUND_BLACK,
-  BACKGROUND_RED,
-  BACKGROUND_GREEN,
-  BACKGROUND_YELLOW,
-  BACKGROUND_BLUE,
-  BACKGROUND_MAGENTA,
-  BACKGROUND_CYAN,
-  BACKGROUND_WHITE
+  NOBG,
+  NOFG,
+  FULL
 };
-
 /*
   Remeber that basic_colour is just unsigned char
 */
-inline basic_colour getfg(basic_colour colour) {
-  basic_colour fg = colour & 0xF;
-  fg += fg < 8 ? 30 : 82;
-  return fg;
-}
-
-inline basic_colour getbg(basic_colour colour) {
-  basic_colour bg = colour >> 4;
-  bg += bg < 8 ? 40 : 92;
-  return bg;
-}
+basic_colour getbg(basic_colour colour);
+basic_colour getfg(basic_colour colour);
+basic_colour get_basic_colour(enum colour_index BG, enum colour_index FG);
 
 void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
                    unsigned char B);

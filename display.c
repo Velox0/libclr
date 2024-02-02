@@ -24,3 +24,26 @@ void display8(char *str, colour8 colour) {
   // Reset formatting
   printf("%s", normal);
 }
+
+void basic_display(char *str, basic_colour colour, enum colour_index control) {
+  char normal[] = "\033[0;0m";
+  switch (control) {
+  case 0:
+  case NOBG:
+    printf("\033[%dm", getfg(colour));
+    break;
+  case 1:
+  case NOFG:
+    printf("\033[%dm", getbg(colour));
+    break;
+  case FULL:
+    printf("\033[%d;%dm", getfg(colour), getbg(colour));
+    break;
+  default:
+    basic_display("Error:", RED, NOBG);
+    printf("invalid control bit\n");
+    return;
+  }
+  printf("%s", str);
+  printf("%s", normal);
+}
