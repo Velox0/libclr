@@ -46,7 +46,7 @@ typedef union {
 
   https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit
 
-  To set to a color use the following method
+  To set to a colour use the following method
   basic_colour colour = 0x<BG><FG>
 
   for example: basic_colour YELLOW_RED = 0x31
@@ -159,11 +159,11 @@ void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
 /*
   Sets FCID to 0
 */
-void resetfg24(colour24 *colour);
+inline void resetfg24(colour24 *colour);
 
 /*
   Sets BCID to 0
 */
-void resetbg24(colour24 *colour);
+inline void resetbg24(colour24 *colour);
 
 #endif

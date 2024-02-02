@@ -1,4 +1,5 @@
 #include "colourmods.h"
+#include <stdlib.h>
 /*
   Remeber that basic_colour is just unsigned char
 */
@@ -47,6 +48,6 @@ void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
   colour->format[FCID] = 5;
 }
 
-void resetfg24(colour24 *colour) { colour->format[FCID] = 0; }
+inline void resetfg24(colour24 *colour) { colour->format[FCID] = 0; }
 
-void resetbg24(colour24 *colour) { colour->format[BCID] = 0; }
+inline void resetbg24(colour24 *colour) { colour->format[BCID] = 0; }
