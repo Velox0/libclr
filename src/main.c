@@ -1,6 +1,6 @@
-#include "colourmods.h"
-#include "display.h"
-#include "options.h"
+#include "colourmods/colourmods.h"
+#include "display/display.h"
+#include "optionhandler/optionhandler.h"
 #include "version.h"
 #include <stdio.h>
 

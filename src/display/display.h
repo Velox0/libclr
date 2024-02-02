@@ -1,7 +1,7 @@
 #ifndef CLRDISPLAY
 #define CLRDISPLAY
 
-#include "colourmods.h"
+#include "../colourmods/colourmods.h"
 
 void display24(char str[], colour24 colour);
 void display8(char str[], colour8 colour);

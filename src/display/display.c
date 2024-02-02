@@ -1,4 +1,4 @@
-#include "colourmods.h"
+#include "../colourmods/colourmods.h"
 #include <stdio.h>
 
 void display24(char *str, colour24 colour) {
