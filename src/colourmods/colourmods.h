@@ -109,16 +109,61 @@ enum colour_index {
 /*
   Remeber that basic_colour is just unsigned char
 */
+/*
+  basic colour to ANSI colour code translator
+  Accepts a basic_colour and return the background ANSI colour value
+  for the basic_colour
+ */
 basic_colour getbg(basic_colour colour);
+
+/*
+  basic colour to ANSI colour code translator
+  Accepts a basic_colour and return the foreground ANSI colour value
+  for the basic_colour
+ */
 basic_colour getfg(basic_colour colour);
+
+/*!
+  Give it a background and foreground colour and it gives a basic_colour
+  for the specified formatting
+
+  Pass it throung getbg and getfg to get the ANSI code
+ */
 basic_colour get_basic_colour(enum colour_index BG, enum colour_index FG);
 
+/*
+  Function to ease the process of manually changing each element of
+  colour24.format[n]. Accepts pointer to the colour24 struct and sets
+  the foreground elements appropriate value
+*/
 void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
                    unsigned char B);
+
+/*
+  Function to ease the process of manually changing each element of
+  colour24.format[n]. Accepts pointer to the colour24 struct and sets
+  the background elements appropriate value
+*/
 void setbgcolour24(colour24 *colour, unsigned char R, unsigned char G,
                    unsigned char B);
 
+/*
+  Function to ease the process of manually changing each element of
+  colour24.format[n]. Accepts pointer to the colour24 struct and sets
+  the foreground and background elements appropriate value
+*/
+void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
+                 unsigned char BB, unsigned char FR, unsigned char FG,
+                 unsigned char FB);
+
+/*
+  Sets FCID to 0
+*/
 void resetfg24(colour24 *colour);
+
+/*
+  Sets BCID to 0
+*/
 void resetbg24(colour24 *colour);
 
 #endif
