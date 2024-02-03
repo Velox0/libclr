@@ -47,7 +47,3 @@ void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
   *colour[FG] = FG;
   *colour[FCID] = 5;
 }
-
-inline void resetfg24(colour24 *colour) { *colour[FCID] = 0; }
-
-inline void resetbg24(colour24 *colour) { *colour[BCID] = 0; }

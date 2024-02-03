@@ -154,11 +154,11 @@ void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
 /*
   Sets FCID to 0
 */
-inline void resetfg24(colour24 *colour);
+inline void resetfg24(colour24 *colour) { *colour[FCID] = 0; }
 
 /*
   Sets BCID to 0
 */
-inline void resetbg24(colour24 *colour);
+inline void resetbg24(colour24 *colour) { *colour[BCID] = 0; }
 
 #endif
