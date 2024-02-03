@@ -7,12 +7,12 @@
   prints the given string in appropriate colour
   refer to ../colourmods/colourmods.h for more documentation
 */
-void display24(char str[], colour24 colour);
+void display24(char *str, colour24 colour);
 
 /*
   prints the given string in appropriate colour
 */
-void display8(char str[], colour8 colour);
+void display8(char *str, colour8 colour);
 
 /*
   same. BUT...

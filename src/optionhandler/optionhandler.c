@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char getoption(char *opt) {
+char getoption(const char *opt) {
   if (opt[1] != '-')
     return opt[1];
 
@@ -21,7 +21,7 @@ char getoption(char *opt) {
   return '\0';
 }
 
-void help(char arg[]) {
+void help(const char *arg) {
   char red[] = "\033[0;31m";
   char green[] = "\033[0;32m";
   char normal[] = "\033[0;0m";

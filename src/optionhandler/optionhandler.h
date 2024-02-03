@@ -1,7 +1,7 @@
 #ifndef CLROPTIONS
 #define CLROPTIONS
 
-void help(char arg[]);
-char getoption(char *opt);
+void help(const char *arg);
+char getoption(const char *opt);
 
 #endif
