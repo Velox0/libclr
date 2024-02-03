@@ -1,6 +1,4 @@
-#include "../src/colourmods/colourmods.h"
-#include "../src/display/display.h"
-#include "../src/optionhandler/optionhandler.h"
+#include "tests.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,3 +11,7 @@ int main() {
     exit(1);
   }
 }
+
+/*
+  ALL TESTS HERE
+*/
