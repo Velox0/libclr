@@ -21,33 +21,33 @@ basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG) {
 
 void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
                    unsigned char B) {
-  colour->format[FR] = R;
-  colour->format[FB] = B;
-  colour->format[FG] = G;
-  colour->format[FCID] = 5;
+  *colour[FR] = R;
+  *colour[FB] = B;
+  *colour[FG] = G;
+  *colour[FCID] = 5;
 }
 
 void setbgcolour24(colour24 *colour, unsigned char R, unsigned char G,
                    unsigned char B) {
-  colour->format[BR] = R;
-  colour->format[BB] = B;
-  colour->format[BG] = G;
-  colour->format[BCID] = 5;
+  *colour[BR] = R;
+  *colour[BB] = B;
+  *colour[BG] = G;
+  *colour[BCID] = 5;
 }
 
 void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
                  unsigned char BB, unsigned char FR, unsigned char FG,
                  unsigned char FB) {
-  colour->format[BR] = BR;
-  colour->format[BB] = BB;
-  colour->format[BG] = BG;
-  colour->format[BCID] = 5;
-  colour->format[FR] = FR;
-  colour->format[FB] = FB;
-  colour->format[FG] = FG;
-  colour->format[FCID] = 5;
+  *colour[BR] = BR;
+  *colour[BB] = BB;
+  *colour[BG] = BG;
+  *colour[BCID] = 5;
+  *colour[FR] = FR;
+  *colour[FB] = FB;
+  *colour[FG] = FG;
+  *colour[FCID] = 5;
 }
 
-inline void resetfg24(colour24 *colour) { colour->format[FCID] = 0; }
+inline void resetfg24(colour24 *colour) { *colour[FCID] = 0; }
 
-inline void resetbg24(colour24 *colour) { colour->format[BCID] = 0; }
+inline void resetbg24(colour24 *colour) { *colour[BCID] = 0; }

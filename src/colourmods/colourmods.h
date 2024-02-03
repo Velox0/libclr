@@ -18,10 +18,7 @@
   format[0-3] store foreground style + RGB values
   format[4-7] store foreground style + RGB values
 */
-typedef union {
-  unsigned long colour;
-  unsigned char format[8];
-} colour24;
+typedef unsigned char colour24[8];
 
 /*
   Similar to 24-bit colours, 8-bit follow the following pattern
@@ -29,9 +26,7 @@ typedef union {
   \033[38 (FOREGROUND); [CSID] (0/5); [N] (0-255);
        48 (BACKGROUND); [CSID] (0/5); [N] (0-255);
 */
-typedef union {
-  unsigned char format[4];
-} colour8;
+typedef unsigned char colour8[4];
 
 /*
   Most terminals at-least support 3-4bit colours. The following
