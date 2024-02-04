@@ -124,7 +124,7 @@ basic_colour getfg(basic_colour colour);
 
   Pass it throung getbg and getfg to get the ANSI code
  */
-basic_colour get_basic_colour(enum colour_index BG, enum colour_index FG);
+basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG);
 
 /*
   Function to ease the process of manually changing each element of
