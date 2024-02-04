@@ -16,6 +16,8 @@ typedef struct {
   TEST FOR EVERY FUNCTION IS REQUIRED
 */
 
+void test_log(const char *testname, int status);
+
 void getbg_test();
 
 void getfg_test();
