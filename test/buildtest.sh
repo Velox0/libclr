@@ -27,6 +27,6 @@ if [ ! -f "./test.out" ]; then
   exit
 fi
 
-echo -e "\n\n${GOOD}Running tests${CLEAR}";
+echo -e "${GOOD}Running tests${CLEAR}";
 echo -e "${COMMANDS}> test.out${CLEAR}";
 ./test.out
