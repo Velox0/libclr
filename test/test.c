@@ -26,17 +26,23 @@ int main() {
 
 // TEST FUNCTIONS
 
-void success(const char *testname) {
-  test1.success++;
-  printf("\033[32m");
-  printf("SUCCESS[%d/%d]:\t%s", test1.success, test1.total, testname);
-  printf("\033[0m\n");
-}
-
-void failure(const char *testname) {
-  test1.failure++;
-  printf("\033[31m");
-  printf("FAILURE[%d/%d]:\t%s", test1.failure, test1.total, testname);
+void test_log(const char *testname, int status) {
+  switch (status) {
+  case 0:
+    test1.success++;
+    printf("\033[32m");
+    printf("SUCCESS [%d/%d]:\t%s", test1.success, test1.total, testname);
+    break;
+  case 1:
+    test1.failure++;
+    printf("\033[31m");
+    printf("FAILURE [%d/%d]:\t%s", test1.failure, test1.total, testname);
+    break;
+  case 3:
+    break;
+  default:
+    break;
+  }
   printf("\033[0m\n");
 }
 
@@ -53,17 +59,10 @@ void getbg_test() {
   */
 
   basic_colour testbg1 = getbg(0x7F);
-  if (testbg1 == 47) {
-    success("getbg");
-  } else {
-    failure("getbg");
-  }
+  test_log("getbg", testbg1 - 47);
+
   basic_colour testbg2 = getbg(0xFF);
-  if (testbg2 == 107) {
-    success("getbg");
-  } else {
-    failure("getbg");
-  }
+  test_log("getbg", testbg2 - 107);
 }
 
 void getfg_test() {
@@ -74,18 +73,11 @@ void getfg_test() {
               expect 97
   */
 
-  basic_colour testbg1 = getfg(0x07);
-  if (testbg1 == 37) {
-    success("getbg");
-  } else {
-    failure("getbg");
-  }
-  basic_colour testbg2 = getfg(0xFF);
-  if (testbg2 == 97) {
-    success("getbg");
-  } else {
-    failure("getbg");
-  }
+  basic_colour testfg1 = getfg(0x07);
+  test_log("getfg", testfg1 - 37);
+
+  basic_colour testfg2 = getfg(0xFF);
+  test_log("getfg", testfg2 - 97);
 }
 
 void getbasic_colour_test() {
@@ -97,15 +89,8 @@ void getbasic_colour_test() {
   */
 
   basic_colour testgc1 = getbasic_colour(BRIGHT_BLACK, RED);
-  if (testgc1 == 0x81) {
-    success("getbasic_colour");
-  } else {
-    failure("getbasic_colour");
-  }
+  test_log("getbasic_colour", testgc1 - 0x81);
+
   basic_colour testgc2 = getbasic_colour(BRIGHT_MAGENTA, BRIGHT_CYAN);
-  if (testgc2 == 0xDE) {
-    success("getbasic_colour");
-  } else {
-    failure("getbasic_colour");
-  }
+  test_log("getbasic_colour", testgc2 - 0xDE);
 }
