@@ -118,7 +118,7 @@ basic_colour getbg(basic_colour colour);
  */
 basic_colour getfg(basic_colour colour);
 
-/*!
+/*
   Give it a background and foreground colour and it gives a basic_colour
   for the specified formatting
 
