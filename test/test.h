@@ -20,6 +20,6 @@ void getbg_test();
 
 void getfg_test();
 
-void get_basic_colour_test();
+void getbasic_colour_test();
 
 void basic_display_test();
