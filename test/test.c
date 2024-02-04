@@ -17,7 +17,7 @@ int main() {
     exit(1);
   }
 
-  getbgtest();
+  getbg_test();
 
   return test1.total != test1.success;
 }
@@ -42,7 +42,7 @@ void failure(const char *testname) {
   ALL TESTS HERE
 */
 
-void getbgtest() {
+void getbg_test() {
   /*
     test for 0x71
               should return 47

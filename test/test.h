@@ -16,4 +16,10 @@ typedef struct {
   TEST FOR EVERY FUNCTION IS REQUIRED
 */
 
-void getbgtest();
+void getbg_test();
+
+void getfg_test();
+
+void get_basic_colour_test();
+
+void basic_display_test();
