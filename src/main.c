@@ -17,7 +17,8 @@ int main(int argc, char *argv[]) {
     case 'r':
       break;
     case 'v':
-      display24(CLRVERSION "\n", colour_list[YELLOW]);
+      basic_display(CLRVERSION, YELLOW, NOBG);
+      printf("\n");
       return 0;
     case 'h':
     default:
