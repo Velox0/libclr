@@ -1,4 +1,5 @@
 #include "colourmods.h"
+#include <stdlib.h>
 /*
   Remeber that basic_colour is just unsigned char
 */
@@ -16,4 +17,33 @@ basic_colour getbg(basic_colour colour) {
 
 basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG) {
   return 16 * BG + FG;
+}
+
+void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
+                   unsigned char B) {
+  *colour[FR] = R;
+  *colour[FB] = B;
+  *colour[FG] = G;
+  *colour[FCID] = 5;
+}
+
+void setbgcolour24(colour24 *colour, unsigned char R, unsigned char G,
+                   unsigned char B) {
+  *colour[BR] = R;
+  *colour[BB] = B;
+  *colour[BG] = G;
+  *colour[BCID] = 5;
+}
+
+void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
+                 unsigned char BB, unsigned char FR, unsigned char FG,
+                 unsigned char FB) {
+  *colour[BR] = BR;
+  *colour[BB] = BB;
+  *colour[BG] = BG;
+  *colour[BCID] = 5;
+  *colour[FR] = FR;
+  *colour[FB] = FB;
+  *colour[FG] = FG;
+  *colour[FCID] = 5;
 }
