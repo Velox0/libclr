@@ -25,3 +25,5 @@ void getfg_test();
 void getbasic_colour_test();
 
 void basic_display_test();
+
+void setcolour24_test();
