@@ -27,4 +27,10 @@ void display8(char *str, colour8 colour);
 */
 void basic_display(char *str, basic_colour colour, enum colour_index control);
 
+/*
+  print colour in gradient with specified specified "step"
+*/
+
+void step_gradient(colour24 colour, colour24 step);
+
 #endif

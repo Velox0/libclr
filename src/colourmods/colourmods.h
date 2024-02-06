@@ -108,14 +108,14 @@ enum colour_index {
   basic colour to ANSI colour code translator
   Accepts a basic_colour and return the background ANSI colour value
   for the basic_colour
- */
+*/
 basic_colour getbg(basic_colour colour);
 
 /*
   basic colour to ANSI colour code translator
   Accepts a basic_colour and return the foreground ANSI colour value
   for the basic_colour
- */
+*/
 basic_colour getfg(basic_colour colour);
 
 /*
@@ -123,7 +123,7 @@ basic_colour getfg(basic_colour colour);
   for the specified formatting
 
   Pass it throung getbg and getfg to get the ANSI code
- */
+*/
 basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG);
 
 /*
@@ -160,5 +160,7 @@ inline void resetfg24(colour24 *colour) { *colour[FCID] = 0; }
   Sets BCID to 0
 */
 inline void resetbg24(colour24 *colour) { *colour[BCID] = 0; }
+
+colour24 *interpolate24(colour24 colour1, colour24 colour2, float factor);
 
 #endif
