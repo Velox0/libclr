@@ -1,4 +1,4 @@
-#include "colourmods.h"
+#include "../include/colourmods.h"
 #include <stdlib.h>
 /*
   Remeber that basic_colour is just unsigned char

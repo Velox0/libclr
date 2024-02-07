@@ -1,7 +1,7 @@
 #ifndef CLRDISPLAY
 #define CLRDISPLAY
 
-#include "../colourmods/colourmods.h"
+#include "colourmods.h"
 
 /*
   prints the given string in appropriate colour
