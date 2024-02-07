@@ -133,7 +133,7 @@ void setcolour24_test() {
   base[BB] = 0;
   setcolour24(colour, 255, 255, 0, 0, 0, 125);
 
-  int f;
+  int f = 1;
 
   for (enum rgb_index i = FR; i < BCID; i++) {
     f = f * base[i] == colour[i];
