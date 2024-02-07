@@ -11,3 +11,21 @@ Currently a work in progress
 # What does it do
 
 Do colour mathematics and format output stream to your liking. Supports 4-bit, 8-bit and rgb colours. More features are underway.
+
+# Setting up
+
+Fork all the branches and clone the repository:
+
+```bash
+git clone https://www.github.com/{username}/libclr.git
+cd libclr
+```
+
+To run unit tests, from the root of the project, run:
+
+```bash
+sh test/buildtest.sh
+```
+
+Test all the functions you add in test.c properly before pushing and/or merging.
+The errors will be saved in `ERROR.log`
