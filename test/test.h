@@ -1,6 +1,5 @@
-#include "../src/colourmods/colourmods.h"
-#include "../src/display/display.h"
-#include "../src/optionhandler/optionhandler.h"
+#include "../include/colourmods.h"
+#include "../include/display.h"
 
 // TEST VARIABLES
 
