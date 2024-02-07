@@ -108,14 +108,14 @@ enum colour_index {
   basic colour to ANSI colour code translator
   Accepts a basic_colour and return the background ANSI colour value
   for the basic_colour
- */
+*/
 basic_colour getbg(basic_colour colour);
 
 /*
   basic colour to ANSI colour code translator
   Accepts a basic_colour and return the foreground ANSI colour value
   for the basic_colour
- */
+*/
 basic_colour getfg(basic_colour colour);
 
 /*
@@ -123,7 +123,7 @@ basic_colour getfg(basic_colour colour);
   for the specified formatting
 
   Pass it throung getbg and getfg to get the ANSI code
- */
+*/
 basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG);
 
 /*
@@ -131,8 +131,9 @@ basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG);
   colour24.format[n]. Accepts pointer to the colour24 struct and sets
   the foreground elements appropriate value
 */
-void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
-                   unsigned char B);
+void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
+                 unsigned char _BB, unsigned char _FR, unsigned char _FG,
+                 unsigned char _FB);
 
 /*
   Function to ease the process of manually changing each element of
@@ -147,7 +148,7 @@ void setbgcolour24(colour24 *colour, unsigned char R, unsigned char G,
   colour24.format[n]. Accepts pointer to the colour24 struct and sets
   the foreground and background elements appropriate value
 */
-void setcolour24(colour24 *colour, unsigned char BR, unsigned char BG,
+void setcolour24(colour24 colour, unsigned char BR, unsigned char BG,
                  unsigned char BB, unsigned char FR, unsigned char FG,
                  unsigned char FB);
 
@@ -160,5 +161,7 @@ inline void resetfg24(colour24 *colour) { *colour[FCID] = 0; }
   Sets BCID to 0
 */
 inline void resetbg24(colour24 *colour) { *colour[BCID] = 0; }
+
+void interpolate24(colour24 colour1, colour24 colour2, float factor);
 
 #endif

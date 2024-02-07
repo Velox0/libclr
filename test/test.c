@@ -8,7 +8,7 @@ static int logerror = 1;
 static FILE *pLog;
 
 int main() {
-  test1.total = 6;
+  test1.total = 7;
   test1.success = 0;
   test1.failure = 0;
 
@@ -29,6 +29,7 @@ int main() {
   getbg_test();
   getfg_test();
   getbasic_colour_test();
+  setcolour24_test();
 
   fclose(pLog);
 
@@ -119,4 +120,24 @@ void getbasic_colour_test() {
 
   basic_colour testgc2 = getbasic_colour(BRIGHT_MAGENTA, BRIGHT_CYAN);
   test_log("getbasic_colour", testgc2 != 0xDE);
+}
+
+void setcolour24_test() {
+  colour24 colour;
+  colour24 base;
+  base[FR] = 0;
+  base[FG] = 0;
+  base[FB] = 0;
+  base[BR] = 255;
+  base[BG] = 255;
+  base[BB] = 0;
+  setcolour24(colour, 255, 255, 0, 0, 0, 125);
+
+  int f;
+
+  for (enum rgb_index i = FR; i < BCID; i++) {
+    f = f * base[i] == colour[i];
+  }
+
+  test_log("setcolour24_test", !f);
 }
