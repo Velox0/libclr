@@ -79,6 +79,8 @@ enum eight_bit_index {
   BCID8  // background cid
 };
 
+enum colour_math { ADD, SUBTRACT, MULTIPLY, DIVIDE };
+
 enum colour_index {
   // Colour index
   BLACK,
@@ -164,5 +166,12 @@ inline void resetbg24(colour24 *colour) { *colour[BCID] = 0; }
 
 void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
                    float factor);
+
+/*
+  Math function
+*/
+
+void math24(colour24 colour, colour24 colour1, colour24 colour2,
+            enum colour_math);
 
 #endif

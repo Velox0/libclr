@@ -1,4 +1,6 @@
 #include "../include/colourmods.h"
+#include "../include/display.h"
+#include <stdio.h>
 #include <stdlib.h>
 /*
   Remeber that basic_colour is just unsigned char
@@ -55,4 +57,49 @@ void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
   colour[FR] = colour1[FR] * (1 - factor) + colour2[FR] * factor;
   colour[FB] = colour1[FB] * (1 - factor) + colour2[FB] * factor;
   colour[FG] = colour1[FG] * (1 - factor) + colour2[FG] * factor;
+}
+
+void math24(colour24 colour, colour24 colour1, colour24 colour2,
+            enum colour_math operation) {
+  switch (operation) {
+  case ADD:
+    for (int i = 0; i < 8; i++) {
+      if (i == FCID || i == BCID)
+        continue;
+      colour[i] = colour1[i] + colour2[i];
+    }
+    break;
+  case SUBTRACT:
+    for (int i = 0; i < 8; i++) {
+      if (i == FCID || i == BCID)
+        continue;
+      if (colour2[i] >= colour1[i]) {
+        colour[i] = 0;
+        continue;
+      }
+      colour[i] = colour1[i] - colour2[i];
+    }
+    break;
+  case MULTIPLY:
+    for (int i = 0; i < 8; i++) {
+      if (i == FCID || i == BCID)
+        continue;
+      colour[i] = (float)colour1[i] / 255 * colour2[i];
+    }
+    break;
+  case DIVIDE:
+    for (int i = 0; i < 8; i++) {
+      if (i == FCID || i == BCID)
+        continue;
+      if (colour2[i] == 0) {
+        colour[i] = 255;
+        continue;
+      }
+      colour[i] = colour1[i] - colour2[i];
+    }
+  default:
+    start_basic(RED, NOBG);
+    printf("colourmods: Illegal operation\n");
+    resetcolour();
+  }
 }
