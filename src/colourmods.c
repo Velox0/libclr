@@ -61,6 +61,7 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
 
 void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
                    float factor) {
+  colour[BR] = colour1[BR] * (1 - factor) + colour2[BR] * factor;
   colour[BB] = colour1[BB] * (1 - factor) + colour2[BB] * factor;
   colour[BG] = colour1[BG] * (1 - factor) + colour2[BG] * factor;
   colour[FR] = colour1[FR] * (1 - factor) + colour2[FR] * factor;
