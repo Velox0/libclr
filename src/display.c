@@ -24,23 +24,17 @@ void display8(const char *str, colour8 colour) {
   printf("%s", normal);
 }
 
-void start_basic(basic_colour colour, enum colour_index control);
+void start_basic(basic_colour colour, enum CSID control);
 
-void basic_display(const char *str, basic_colour colour,
-                   enum colour_index control) {
+void basic_display(const char *str, basic_colour colour, enum CSID control) {
   char normal[] = "\033[0m";
   start_basic(colour, control);
   printf("%s", str);
   printf("%s", normal);
 }
 
-void start_basic(basic_colour colour, enum colour_index control) {
+void start_basic(basic_colour colour, enum CSID control) {
   switch (control) {
-  case 0:
-  case NOBG:
-    printf("\033[%dm", getfg(colour));
-    break;
-  case 1:
   case NOFG:
     printf("\033[%dm", getbg(colour));
     break;
@@ -48,8 +42,7 @@ void start_basic(basic_colour colour, enum colour_index control) {
     printf("\033[%d;%dm", getfg(colour), getbg(colour));
     break;
   default:
-    basic_display("Error:", RED, NOBG);
-    printf(" invalid control value (NOBG/NOGF/FULL)\n");
+    printf("\033[%dm", getfg(colour));
   }
 }
 

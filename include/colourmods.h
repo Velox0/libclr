@@ -98,11 +98,16 @@ enum colour_index {
   BRIGHT_BLUE,
   BRIGHT_MAGENTA,
   BRIGHT_CYAN,
-  BRIGHT_WHITE,
-  NOBG,
-  NOFG,
-  FULL
+  BRIGHT_WHITE
 };
+
+// Colour space id for basic colour
+enum CSID {
+  NOBG, // No background (default)
+  NOFG, // No foregorund
+  FULL  // Both foreground and background
+};
+
 /*
   Remeber that basic_colour is just unsigned char
 */
