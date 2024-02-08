@@ -8,7 +8,7 @@ static int logerror = 1;
 static FILE *pLog;
 
 int main() {
-  test1.total = 7;
+  test1.total = 9;
   test1.success = 0;
   test1.failure = 0;
 
@@ -30,6 +30,8 @@ int main() {
   getfg_test();
   getbasic_colour_test();
   setcolour24_test();
+  interpolate24_test();
+  start24_test();
 
   fclose(pLog);
 
@@ -59,8 +61,10 @@ void test_log(const char *testname, int status) {
       fprintf(pLog, "Test %d: %s\n", test1.failure + test1.success, testname);
     break;
   case 3:
+    printf("-----------\n");
     printf("\033[33m");
-    printf("OBSERVE :%s", testname);
+    printf("OBSERVE : \033[91m%s\033[0m\n", testname);
+    printf("-----------");
     break;
   case 4:
     printf("Does the output look good? [Y/n] ");
@@ -68,6 +72,10 @@ void test_log(const char *testname, int status) {
     test_log(testname, ch != 'Y' && ch != 'y' && ch != '\n');
     break;
   default:
+    start_basic(BLUE, NOBG);
+    printf("%s: STATUS: %d? Marking failed\n", testname, status);
+    resetcolour();
+    test_log(testname, 1);
     break;
   }
   printf("\033[0m\n");
@@ -140,4 +148,31 @@ void setcolour24_test() {
   }
 
   test_log("setcolour24_test", !f);
+}
+
+void interpolate24_test() {
+  colour24 colour, colour1, colour2, control;
+  newcolour24(colour);
+  newcolour24(colour1);
+  newcolour24(colour2);
+  newcolour24(control);
+  setcolour24(colour1, 0, 100, 200, 50, 150, 250);
+  setcolour24(colour2, 100, 120, 180, 100, 250, 250);
+  setcolour24(control, 50, 110, 190, 75, 200, 250);
+
+  interpolate24(colour, colour1, colour2, .5);
+
+  test_log("interpolate24", difference24(control, colour));
+}
+
+void start24_test() {
+  colour24 colour;
+  setcolour24(colour, 255, 0, 0, 255, 255, 0);
+  test_log("The following text should appear yellow on red", 3);
+  start24(colour);
+  printf("YELLOW-ON-RED");
+  resetcolour();
+  printf("\n");
+
+  test_log("start24", 4);
 }
