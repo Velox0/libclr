@@ -24,9 +24,17 @@ void display8(const char *str, colour8 colour) {
   printf("%s", normal);
 }
 
+void start_basic(basic_colour colour, enum colour_index control);
+
 void basic_display(const char *str, basic_colour colour,
                    enum colour_index control) {
   char normal[] = "\033[0m";
+  start_basic(colour, control);
+  printf("%s", str);
+  printf("%s", normal);
+}
+
+void start_basic(basic_colour colour, enum colour_index control) {
   switch (control) {
   case 0:
   case NOBG:
@@ -42,10 +50,7 @@ void basic_display(const char *str, basic_colour colour,
   default:
     basic_display("Error:", RED, NOBG);
     printf(" invalid control value (NOBG/NOGF/FULL)\n");
-    return;
   }
-  printf("%s", str);
-  printf("%s", normal);
 }
 
 void start24(colour24 colour) {

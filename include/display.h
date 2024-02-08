@@ -35,6 +35,8 @@ inline void resetcolour() { printf("\033[0m"); }
 
 void step_gradient(colour24 colour, colour24 step);
 
+void start_basic(basic_colour colour, enum colour_index control);
+
 void start24(colour24 colour);
 
 #endif
