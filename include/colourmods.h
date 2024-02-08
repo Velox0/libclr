@@ -174,22 +174,35 @@ void setcolour24(colour24 colour, unsigned char BR, unsigned char BG,
 /*
   Sets FCID to 0
 */
-inline void resetfg24(colour24 *colour) { *colour[FCID] = 0; }
+inline void resetfg24(colour24 colour) { colour[FCID] = 0; }
 
 /*
   Sets BCID to 0
 */
-inline void resetbg24(colour24 *colour) { *colour[BCID] = 0; }
+inline void resetbg24(colour24 colour) { colour[BCID] = 0; }
 
 void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
                    float factor);
 
 /*
   Math function
-*/
+  Takes 3 colour24's
+    colour      to store output
+    colour1     first oprand
+    colour2     second oprand
 
+  and 1 colour_math enum
+    operation   tells math24 which operation to perform
+                possible values:
+                  ADD, SUBTRACT, MULTIPLY, DIVIDE
+                more to add:
+                  LIGHTER, DARKER
+
+                might also convert interpolate24() to
+                a part of math24 later
+*/
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
-            enum colour_math);
+            enum colour_math operation);
 
 // Returns difference between two colours in integer
 int difference24(colour24 colour1, colour24 colour2);
