@@ -191,4 +191,10 @@ void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
             enum colour_math);
 
+// Returns difference between two colours in integer
+int difference24(colour24 colour1, colour24 colour2);
+
+// Returns value of colour24 between 0.0 and 1.0
+float value24(colour24 colour);
+
 #endif

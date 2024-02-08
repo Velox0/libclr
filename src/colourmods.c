@@ -112,3 +112,20 @@ void math24(colour24 colour, colour24 colour1, colour24 colour2,
     resetcolour();
   }
 }
+
+int difference24(colour24 colour1, colour24 colour2) {
+  int diff = 0;
+  for (int i = 0; i < 8; i++) {
+    if (i == BCID || i == FCID)
+      continue;
+    if (colour1[i] > colour2[i])
+      diff += (int)colour1[i] - colour2[i];
+    else
+      diff += (int)colour2[i] - colour1[i];
+  }
+  return diff;
+}
+
+float value24(colour24 colour) {
+  return (colour[FR] + colour[FG] + colour[FB]) / (255.0f * 3);
+}
