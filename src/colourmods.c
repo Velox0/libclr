@@ -21,6 +21,15 @@ basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG) {
   return 16 * BG + FG;
 }
 
+void newcolour24(colour24 colour) {
+  for (int i = 0; i < 8; i++) {
+    if (i != BCID && i != FCID)
+      colour[i] = 0;
+    else
+      colour[i] = 5;
+  }
+}
+
 void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
                    unsigned char B) {
   *colour[FR] = R;

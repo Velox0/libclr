@@ -134,6 +134,10 @@ basic_colour getfg(basic_colour colour);
 basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG);
 
 /*
+  Initialize a colour24
+*/
+void newcolour24(colour24 colour);
+/*
   Function to ease the process of manually changing each element of
   colour24.format[n]. Accepts pointer to the colour24 struct and sets
   the foreground elements appropriate value
