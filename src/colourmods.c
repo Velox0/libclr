@@ -41,11 +41,11 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
   colour[BR] = _BR;
   colour[BB] = _BB;
   colour[BG] = _BG;
-  colour[BCID] = 5;
+  colour[BCID] = 2;
   colour[FR] = _FR;
   colour[FB] = _FB;
   colour[FG] = _FG;
-  colour[FCID] = 5;
+  colour[FCID] = 2;
 }
 
 void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
