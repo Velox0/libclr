@@ -30,20 +30,20 @@ void newcolour24(colour24 colour) {
   }
 }
 
-void setfgcolour24(colour24 *colour, unsigned char R, unsigned char G,
+void setfgcolour24(colour24 colour, unsigned char R, unsigned char G,
                    unsigned char B) {
-  *colour[FR] = R;
-  *colour[FB] = B;
-  *colour[FG] = G;
-  *colour[FCID] = 5;
+  colour[FR] = R;
+  colour[FB] = B;
+  colour[FG] = G;
+  colour[FCID] = 5;
 }
 
-void setbgcolour24(colour24 *colour, unsigned char R, unsigned char G,
+void setbgcolour24(colour24 colour, unsigned char R, unsigned char G,
                    unsigned char B) {
-  *colour[BR] = R;
-  *colour[BB] = B;
-  *colour[BG] = G;
-  *colour[BCID] = 5;
+  colour[BR] = R;
+  colour[BB] = B;
+  colour[BG] = G;
+  colour[BCID] = 5;
 }
 
 void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,

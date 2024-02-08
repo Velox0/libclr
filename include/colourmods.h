@@ -151,7 +151,15 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
   colour24.format[n]. Accepts pointer to the colour24 struct and sets
   the background elements appropriate value
 */
-void setbgcolour24(colour24 *colour, unsigned char R, unsigned char G,
+void setbgcolour24(colour24 colour, unsigned char R, unsigned char G,
+                   unsigned char B);
+
+/*
+  Function to ease the process of manually changing each element of
+  colour24.format[n]. Accepts pointer to the colour24 struct and sets
+  the foregorund elements appropriate value
+*/
+void setfgcolour24(colour24 colour, unsigned char R, unsigned char G,
                    unsigned char B);
 
 /*
