@@ -27,6 +27,8 @@ void display8(char *str, colour8 colour);
 */
 void basic_display(char *str, basic_colour colour, enum colour_index control);
 
+inline void resetcolour() { printf("\033[0m"); }
+
 /*
   print colour in gradient with specified specified "step"
 */

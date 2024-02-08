@@ -49,6 +49,11 @@ void basic_display(const char *str, basic_colour colour,
 }
 
 void start24(colour24 colour) {
-  printf("\033[38;%d;%d;%dm", colour[FCID], colour[FR], colour[FG], colour[FB]);
-  printf("\033[48;%d;%d;%dm", colour[BCID], colour[BR], colour[BG], colour[BB]);
+  // The foreground
+  printf("\033[38;%d;%d;%d;%dm", colour[FCID], colour[FR], colour[FG],
+         colour[FB]);
+
+  // The background
+  printf("\033[48;%d;%d;%d;%dm", colour[BCID], colour[BR], colour[BG],
+         colour[BB]);
 }
