@@ -47,3 +47,12 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
   colour[FG] = _FG;
   colour[FCID] = 5;
 }
+
+void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
+                   float factor) {
+  colour[BB] = colour1[BB] * (1 - factor) + colour2[BB] * factor;
+  colour[BG] = colour1[BG] * (1 - factor) + colour2[BG] * factor;
+  colour[FR] = colour1[FR] * (1 - factor) + colour2[FR] * factor;
+  colour[FB] = colour1[FB] * (1 - factor) + colour2[FB] * factor;
+  colour[FG] = colour1[FG] * (1 - factor) + colour2[FG] * factor;
+}
