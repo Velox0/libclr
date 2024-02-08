@@ -33,4 +33,6 @@ void basic_display(char *str, basic_colour colour, enum colour_index control);
 
 void step_gradient(colour24 colour, colour24 step);
 
+void start24(colour24 colour);
+
 #endif
