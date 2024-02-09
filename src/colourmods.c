@@ -59,24 +59,14 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
   colour[FCID] = 2;
 }
 
-void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
-                   float factor) {
-  colour[BR] = colour1[BR] * (1 - factor) + colour2[BR] * factor;
-  colour[BB] = colour1[BB] * (1 - factor) + colour2[BB] * factor;
-  colour[BG] = colour1[BG] * (1 - factor) + colour2[BG] * factor;
-  colour[FR] = colour1[FR] * (1 - factor) + colour2[FR] * factor;
-  colour[FB] = colour1[FB] * (1 - factor) + colour2[FB] * factor;
-  colour[FG] = colour1[FG] * (1 - factor) + colour2[FG] * factor;
-}
-
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
-            enum colour_math operation) {
+            enum colour_math operation, float blend) {
   switch (operation) {
   case ADD:
     for (int i = 0; i < 8; i++) {
       if (i == FCID || i == BCID)
         continue;
-      colour[i] = colour1[i] + colour2[i];
+      colour[i] = colour1[i] + colour2[i] * blend;
     }
     break;
   case SUBTRACT:
@@ -87,14 +77,14 @@ void math24(colour24 colour, colour24 colour1, colour24 colour2,
         colour[i] = 0;
         continue;
       }
-      colour[i] = colour1[i] - colour2[i];
+      colour[i] = colour1[i] - colour2[i] * blend;
     }
     break;
   case MULTIPLY:
     for (int i = 0; i < 8; i++) {
       if (i == FCID || i == BCID)
         continue;
-      colour[i] = (float)colour1[i] / 255 * colour2[i];
+      colour[i] = (float)colour1[i] / 255 * colour2[i] * blend;
     }
     break;
   case DIVIDE:
@@ -105,7 +95,14 @@ void math24(colour24 colour, colour24 colour1, colour24 colour2,
         colour[i] = 255;
         continue;
       }
-      colour[i] = colour1[i] - colour2[i];
+      colour[i] = colour1[i] - colour2[i] * blend;
+    }
+    break;
+  case MIX:
+    for (int i = 0; i < 8; i++) {
+      if (i == FCID || i == BCID)
+        continue;
+      colour[i] = colour1[i] * (1 - blend) + colour2[i] * blend;
     }
     break;
   default:

@@ -79,7 +79,7 @@ enum eight_bit_index {
   BCID8  // background cid
 };
 
-enum colour_math { ADD, SUBTRACT, MULTIPLY, DIVIDE };
+enum colour_math { ADD, SUBTRACT, MULTIPLY, DIVIDE, MIX };
 
 enum colour_index {
   // Colour index
@@ -191,18 +191,20 @@ void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
     colour1     first oprand
     colour2     second oprand
 
-  and 1 colour_math enum
+  1 colour_math enum
     operation   tells math24 which operation to perform
                 possible values:
-                  ADD, SUBTRACT, MULTIPLY, DIVIDE
+                  ADD, SUBTRACT, MULTIPLY, DIVIDE, MIX
                 more to add:
                   LIGHTER, DARKER
 
-                might also convert interpolate24() to
-                a part of math24 later
+  and a float
+    blend       similar to editing applications blend
+                controls the "opacity" of the second colour
+                ranges from 0.0-1.0
 */
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
-            enum colour_math operation);
+            enum colour_math operation, float blend);
 
 // Returns difference between two colours in integer
 int difference24(colour24 colour1, colour24 colour2);
