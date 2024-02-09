@@ -61,54 +61,44 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
 
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
             enum colour_math operation, float blend) {
-  switch (operation) {
-  case ADD:
-    for (int i = 0; i < 8; i++) {
-      if (i == FCID || i == BCID)
-        continue;
-      colour[i] = colour1[i] + colour2[i] * blend;
+
+  if (operation < 0 || operation > 4) {
+    start_basic(RED, NOBG);
+    printf("colourmods: Illegal operation\n");
+    resetcolour();
+    return;
+  }
+
+  for (int i = 0; i < 8; i++) {
+    if (i == FCID || i == BCID) {
+      continue;
     }
-    break;
-  case SUBTRACT:
-    for (int i = 0; i < 8; i++) {
-      if (i == FCID || i == BCID)
-        continue;
+
+    switch (operation) {
+    case ADD:
+      colour[i] = colour1[i] + colour2[i] * blend;
+      break;
+    case SUBTRACT:
       if (colour2[i] >= colour1[i]) {
         colour[i] = 0;
         continue;
       }
       colour[i] = colour1[i] - colour2[i] * blend;
-    }
-    break;
-  case MULTIPLY:
-    for (int i = 0; i < 8; i++) {
-      if (i == FCID || i == BCID)
-        continue;
+      break;
+    case MULTIPLY:
       colour[i] = (float)colour1[i] / 255 * colour2[i] * blend;
-    }
-    break;
-  case DIVIDE:
-    for (int i = 0; i < 8; i++) {
-      if (i == FCID || i == BCID)
-        continue;
+      break;
+    case DIVIDE:
       if (colour2[i] == 0) {
         colour[i] = 255;
         continue;
       }
       colour[i] = colour1[i] - colour2[i] * blend;
-    }
-    break;
-  case MIX:
-    for (int i = 0; i < 8; i++) {
-      if (i == FCID || i == BCID)
-        continue;
+      break;
+    case MIX:
       colour[i] = colour1[i] * (1 - blend) + colour2[i] * blend;
+      break;
     }
-    break;
-  default:
-    start_basic(RED, NOBG);
-    printf("colourmods: Illegal operation\n");
-    resetcolour();
   }
 }
 
