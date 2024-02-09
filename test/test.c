@@ -63,7 +63,7 @@ void test_log(const char *testname, int status) {
   case 3:
     printf("-----------\n");
     printf("\033[33m");
-    printf("OBSERVE : \033[91m%s\033[0m\n", testname);
+    printf("OBSERVE : \033[96m%s\033[0m\n", testname);
     printf("-----------");
     break;
   case 4:

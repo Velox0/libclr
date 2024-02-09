@@ -107,6 +107,7 @@ void math24(colour24 colour, colour24 colour1, colour24 colour2,
       }
       colour[i] = colour1[i] - colour2[i];
     }
+    break;
   default:
     start_basic(RED, NOBG);
     printf("colourmods: Illegal operation\n");
