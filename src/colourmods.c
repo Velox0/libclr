@@ -62,10 +62,20 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
             enum colour_math operation, float blend) {
 
-  if (operation < 0 || operation > 4) {
+  if (operation < 0 || operation > LAST_OPERATION) {
     start_basic(RED, NOBG);
     printf("colourmods: Illegal operation\n");
     resetcolour();
+    return;
+  }
+
+  if (blend == 0.0f) {
+    for (int i = 0; i < 8; i++) {
+      if (i == FCID || i == BCID) {
+        continue;
+      }
+      colour[i] = colour1[i];
+    }
     return;
   }
 
@@ -76,7 +86,10 @@ void math24(colour24 colour, colour24 colour1, colour24 colour2,
 
     switch (operation) {
     case ADD:
-      colour[i] = colour1[i] + colour2[i] * blend;
+      colour[i] = (int)colour1[i] + colour2[i] * blend;
+      // Clip to 255
+      if (colour[i] < colour1[i] || colour[i] < colour2[i])
+        colour[i] = 255;
       break;
     case SUBTRACT:
       if (colour2[i] >= colour1[i]) {
@@ -86,18 +99,30 @@ void math24(colour24 colour, colour24 colour1, colour24 colour2,
       colour[i] = colour1[i] - colour2[i] * blend;
       break;
     case MULTIPLY:
-      colour[i] = (float)colour1[i] / 255 * colour2[i] * blend;
+      colour[i] = colour1[i] / 255.0f * colour2[i];
+      // Blend (same as MIX)
+      colour[i] = colour1[i] * (1 - blend) + colour[i] * blend;
       break;
     case DIVIDE:
       if (colour2[i] == 0) {
         colour[i] = 255;
         continue;
       }
-      colour[i] = colour1[i] - colour2[i] * blend;
+      // Normal division
+      colour[i] = (float)colour1[i] / colour2[i];
+      // Same as MIX operation
+      colour[i] = colour1[i] * (1 - blend) + colour[i] * blend;
       break;
     case MIX:
       colour[i] = colour1[i] * (1 - blend) + colour2[i] * blend;
       break;
+    case LIGHTEN:
+      colour[i] = colour1[i] > colour2[i] ? colour1[i] : colour2[i];
+      colour[i] = colour1[i] * (1 - blend) + colour[i] * blend;
+      break;
+    case DARKEN:
+      colour[i] = colour1[i] < colour2[i] ? colour1[i] : colour2[i];
+      colour[i] = colour1[i] * (1 - blend) + colour[i] * blend;
     }
   }
 }
