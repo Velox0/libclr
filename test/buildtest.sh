@@ -20,7 +20,7 @@ fi
 echo -e "${GOOD}Compiling test${CLEAR}";
 echo -e "${COMMANDS}> gcc test.c${CLEAR}";
 
-gcc -Og -Wall -o test.out ./test/test.c ./src/{colourmods.c,display.c}
+gcc -Og -Wall -o test.out ./test/test.c ./src/colourmods.c ./src/display.c
 if [ ! -f "./test.out" ]; then
   echo -e "${ERR}Fetal error:${CLEAR} compile failed"
   echo -e "${ERR}Aborted${CLEAR}"
