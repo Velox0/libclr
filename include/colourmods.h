@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 /*
-  The colour union stores colour/formatting information
+  colour24 stores colour/formatting information
   required for ANSI escape codes.
 
   24-bit ANSI uses the following format of escape sequence
@@ -24,12 +24,12 @@ typedef unsigned char colour24[8];
   Similar to 24-bit colours, 8-bit follow the following pattern
 
   \033[38 (FOREGROUND); [CSID] (0/5); [N] (0-255);
-       48 (BACKGROUND); [CSID] (0/5); [N] (0-255);
+       48 (BACKGROUND); [CSID] (0/5); [N] (0-255) m
 */
 typedef unsigned char colour8[4];
 
 /*
-  Most terminals at-least support 3-4bit colours. The following
+  Most terminals at-least support 4-bit colours. The following
   is the required format:
 
   \033[ [FOREGROUND COLOUR / BACKGROUND COLOUR] m
