@@ -8,9 +8,9 @@ Currently a work in progress
 <p>c library for spicing up the output</p>
 </div>
 
-# What does it do
+# Overview
 
-Do colour mathematics and format output stream to your liking. Supports 4-bit, 8-bit and rgb colours. More features are underway.
+Perform colour mathematics and colourise output stream with endless customisations. Supports 4-bit, 8-bit and rgb colours. More features are underway.
 
 # Setting up
 
@@ -29,3 +29,29 @@ sh test/buildtest.sh
 
 Test all the functions you add in test.c properly before pushing and/or merging.
 The errors will be saved in `ERROR.log`
+
+# Installation
+
+In project root:
+
+```bash
+mkdir lib
+gcc -Wall -shared -fPIC -o lib/libclr.so src/colourmods.c src/display.c -Iinclude
+
+sudo mkdir /usr/include/libclr/
+sudo cp ./include/* /usr/include/libclr/
+
+sudo mv ./lib/libclr.so /usr/lib/
+```
+
+## Usage
+
+After installation include the library using the following include line:
+
+```c
+#include <libclr/libclr.h>
+
+/*
+code...
+*/
+```

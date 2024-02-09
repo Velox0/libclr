@@ -1,1 +1,1 @@
-#define CLRVERSION "v0.1.0-BLACK"
+#define LIBCLRVERSION "v0.1.1-RED"
