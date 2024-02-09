@@ -21,12 +21,12 @@ void getbg_test();
 
 void getfg_test();
 
-void getbasic_colour_test();
+void getcolour4_test();
 
-void basic_display_test();
+void display4_test();
 
 void setcolour24_test();
 
-void interpolate24_test();
+void math24_test();
 
 void start24_test();

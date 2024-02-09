@@ -21,16 +21,16 @@ int main() {
 
   int a = system("cd ./test 2>/dev/null");
   if (a) {
-    basic_display("Error:", BLACK * 16 + RED, FULL);
+    display4("Error:", BLACK * 16 + RED, FULL);
     printf(" Only run tests from root folder of project\n");
     exit(1);
   }
 
   getbg_test();
   getfg_test();
-  getbasic_colour_test();
+  getcolour4_test();
   setcolour24_test();
-  interpolate24_test();
+  math24_test();
   start24_test();
 
   fclose(pLog);
@@ -72,7 +72,7 @@ void test_log(const char *testname, int status) {
     test_log(testname, ch != 'Y' && ch != 'y' && ch != '\n');
     break;
   default:
-    start_basic(BLUE, NOBG);
+    start4(BLUE, NOBG);
     printf("%s: STATUS: %d? Marking failed\n", testname, status);
     resetcolour();
     test_log(testname, 1);
@@ -93,10 +93,10 @@ void getbg_test() {
               should return 107
   */
 
-  basic_colour testbg1 = getbg(0x7F);
+  colour4 testbg1 = getbg(0x7F);
   test_log("getbg", testbg1 != 47);
 
-  basic_colour testbg2 = getbg(0xFF);
+  colour4 testbg2 = getbg(0xFF);
   test_log("getbg", testbg2 != 107);
 }
 
@@ -108,14 +108,14 @@ void getfg_test() {
               expect 97
   */
 
-  basic_colour testfg1 = getfg(0x07);
+  colour4 testfg1 = getfg(0x07);
   test_log("getfg", testfg1 != 37);
 
-  basic_colour testfg2 = getfg(0xFF);
+  colour4 testfg2 = getfg(0xFF);
   test_log("getfg", testfg2 != 97);
 }
 
-void getbasic_colour_test() {
+void getcolour4_test() {
   /*
     test for BRIGHT_BLACK, RED
             expect 0x81
@@ -123,11 +123,11 @@ void getbasic_colour_test() {
             expect 0xDE
   */
 
-  basic_colour testgc1 = getbasic_colour(BRIGHT_BLACK, RED);
-  test_log("getbasic_colour", testgc1 != 0x81);
+  colour4 testgc1 = getcolour4(BRIGHT_BLACK, RED);
+  test_log("getcolour4", testgc1 != 0x81);
 
-  basic_colour testgc2 = getbasic_colour(BRIGHT_MAGENTA, BRIGHT_CYAN);
-  test_log("getbasic_colour", testgc2 != 0xDE);
+  colour4 testgc2 = getcolour4(BRIGHT_MAGENTA, BRIGHT_CYAN);
+  test_log("getcolour4", testgc2 != 0xDE);
 }
 
 void setcolour24_test() {
@@ -150,7 +150,7 @@ void setcolour24_test() {
   test_log("setcolour24_test", !f);
 }
 
-void interpolate24_test() {
+void math24_test() {
   colour24 colour, colour1, colour2, control;
   newcolour24(colour);
   newcolour24(colour1);
@@ -160,7 +160,7 @@ void interpolate24_test() {
   setcolour24(colour2, 100, 120, 180, 100, 250, 250);
   setcolour24(control, 50, 110, 190, 75, 200, 250);
 
-  interpolate24(colour, colour1, colour2, .5);
+  math24(colour, colour1, colour2, MIX, .5);
 
   test_log("interpolate24", difference24(control, colour));
 }
