@@ -24,16 +24,16 @@ void display8(const char *str, colour8 colour) {
   printf("%s", normal);
 }
 
-void start_basic(basic_colour colour, enum CSID control);
+void start4(colour4 colour, enum CSID control);
 
-void basic_display(const char *str, basic_colour colour, enum CSID control) {
+void display4(const char *str, colour4 colour, enum CSID control) {
   char normal[] = "\033[0m";
-  start_basic(colour, control);
+  start4(colour, control);
   printf("%s", str);
   printf("%s", normal);
 }
 
-void start_basic(basic_colour colour, enum CSID control) {
+void start4(colour4 colour, enum CSID control) {
   switch (control) {
   case NOFG:
     printf("\033[%dm", getbg(colour));

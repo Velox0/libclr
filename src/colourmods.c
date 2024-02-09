@@ -3,21 +3,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
-  Remeber that basic_colour is just unsigned char
+  Remeber that colour4 is just unsigned char
 */
-basic_colour getfg(basic_colour colour) {
-  basic_colour fg = colour & 0xF;
+colour4 getfg(colour4 colour) {
+  colour4 fg = colour & 0xF;
   fg += fg < 8 ? 30 : 82;
   return fg;
 }
 
-basic_colour getbg(basic_colour colour) {
-  basic_colour bg = colour >> 4;
+colour4 getbg(colour4 colour) {
+  colour4 bg = colour >> 4;
   bg += bg < 8 ? 40 : 92;
   return bg;
 }
 
-basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG) {
+colour4 getcolour4(enum colour_index BG, enum colour_index FG) {
   return 16 * BG + FG;
 }
 
@@ -63,7 +63,7 @@ void math24(colour24 colour, colour24 colour1, colour24 colour2,
             enum colour_math operation, float blend) {
 
   if (operation < 0 || operation > LAST_OPERATION) {
-    start_basic(RED, NOBG);
+    start4(RED, NOBG);
     printf("colourmods: Illegal operation\n");
     resetcolour();
     return;

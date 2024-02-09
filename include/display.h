@@ -23,9 +23,9 @@ void display8(char *str, colour8 colour);
       FULL                  both foregrounf and background will be affected
 
   example:
-    basic_display("Error:", RED, NOBG);
+    display4("Error:", RED, NOBG);
 */
-void basic_display(char *str, basic_colour colour, enum CSID control);
+void display4(char *str, colour4 colour, enum CSID control);
 
 inline void resetcolour() { printf("\033[0m"); }
 
@@ -35,7 +35,7 @@ inline void resetcolour() { printf("\033[0m"); }
 
 void step_gradient(colour24 colour, colour24 step);
 
-void start_basic(basic_colour colour, enum CSID control);
+void start4(colour4 colour, enum CSID control);
 
 void start24(colour24 colour);
 

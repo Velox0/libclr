@@ -42,20 +42,20 @@ typedef unsigned char colour8[4];
   https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit
 
   To set to a colour use the following method
-  basic_colour colour = 0x<BG><FG>
+  colour4 colour = 0x<BG><FG>
 
-  for example: basic_colour YELLOW_RED = 0x31
+  for example: colour4 YELLOW_RED = 0x31
   where left digit is background yellow and right digit is red
 
   To find out what number gives what colour refer to the enum colour_index
   where 0-16 all colours are on their respective indexes
 
   you can also set colours as follows:
-  basic_colour example = RED (This will set the foreground colour red)
+  colour4 example = RED (This will set the foreground colour red)
                example += YELLOW * 16 (This will set background colour yellow)
 */
 
-typedef unsigned char basic_colour;
+typedef unsigned char colour4;
 
 /*
   instead of accessing colour24.format[] elements with
@@ -110,7 +110,7 @@ enum colour_index {
   BRIGHT_WHITE
 };
 
-// Colour space id for basic colour
+// Colour space id for colour4
 enum CSID {
   NOBG, // No background (default)
   NOFG, // No foregorund
@@ -118,29 +118,29 @@ enum CSID {
 };
 
 /*
-  Remeber that basic_colour is just unsigned char
+  Remeber that colour4 is just unsigned char
 */
 /*
-  basic colour to ANSI colour code translator
-  Accepts a basic_colour and return the background ANSI colour value
-  for the basic_colour
+  colour4 to ANSI colour code translator
+  Accepts a colour4 and return the background ANSI colour value
+  for the colour4
 */
-basic_colour getbg(basic_colour colour);
+colour4 getbg(colour4 colour);
 
 /*
-  basic colour to ANSI colour code translator
-  Accepts a basic_colour and return the foreground ANSI colour value
-  for the basic_colour
+  colour4 to ANSI colour code translator
+  Accepts a colour4 and return the foreground ANSI colour value
+  for the colour4
 */
-basic_colour getfg(basic_colour colour);
+colour4 getfg(colour4 colour);
 
 /*
-  Give it a background and foreground colour and it gives a basic_colour
+  Give it a background and foreground colour and it gives a colour4
   for the specified formatting
 
   Pass it throung getbg and getfg to get the ANSI code
 */
-basic_colour getbasic_colour(enum colour_index BG, enum colour_index FG);
+colour4 getcolour4(enum colour_index BG, enum colour_index FG);
 
 /*
   Initialize a colour24
