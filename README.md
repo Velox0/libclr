@@ -35,10 +35,10 @@ The errors will be saved in `ERROR.log`
 In project root:
 
 ```bash
-mkdir lib
+mkdir -p lib
 gcc -Wall -shared -fPIC -o lib/libclr.so src/colourmods.c src/display.c -Iinclude
 
-sudo mkdir /usr/include/libclr/
+sudo mkdir -p /usr/include/libclr/
 sudo cp ./include/* /usr/include/libclr/
 
 sudo mv ./lib/libclr.so /usr/lib/
