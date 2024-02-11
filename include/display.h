@@ -25,7 +25,7 @@ void display8(char *str, colour8 colour);
   example:
     display4("Error:", RED, NOBG);
 */
-void display4(char *str, colour4 colour, enum CSID control);
+void display4(char *str, colour4 colour, CSID control);
 
 inline void resetcolour() { printf("\033[0m"); }
 
@@ -35,7 +35,7 @@ inline void resetcolour() { printf("\033[0m"); }
 
 void step_gradient(colour24 colour, colour24 step);
 
-void start4(colour4 colour, enum CSID control);
+void start4(colour4 colour, CSID control);
 
 void start24(colour24 colour);
 

@@ -61,7 +61,7 @@ typedef unsigned char colour4;
   instead of accessing colour24.format[] elements with
   numbers, use enum rgb_index for better maintainability
 */
-enum rgb_index {
+typedef enum {
   FR,   // foreground red
   FG,   // foreground green
   FB,   // foreground blue
@@ -70,16 +70,16 @@ enum rgb_index {
   BG,   // background green
   BB,   // background blue
   BCID  // background colour space id
-};
+} rgb_index;
 
-enum eight_bit_index {
+typedef enum {
   FN,    // foreground colour
   FCID8, // foreground cid
   BN,    // background colour
   BCID8  // background cid
-};
+} eight_bit_index;
 
-enum colour_math {
+typedef enum {
   ADD,
   SUBTRACT,
   MULTIPLY,
@@ -88,9 +88,9 @@ enum colour_math {
   LIGHTEN,
   DARKEN,
   LAST_OPERATION = DARKEN
-};
+} colour_math;
 
-enum colour_index {
+typedef enum {
   // Colour index
   BLACK,
   RED,
@@ -108,14 +108,14 @@ enum colour_index {
   BRIGHT_MAGENTA,
   BRIGHT_CYAN,
   BRIGHT_WHITE
-};
+} colour_index;
 
 // Colour space id for colour4
-enum CSID {
+typedef enum {
   NOBG, // No background (default)
   NOFG, // No foregorund
   FULL  // Both foreground and background
-};
+} CSID;
 
 /*
   Remeber that colour4 is just unsigned char
@@ -140,7 +140,7 @@ colour4 getfg(colour4 colour);
 
   Pass it throung getbg and getfg to get the ANSI code
 */
-colour4 getcolour4(enum colour_index BG, enum colour_index FG);
+colour4 getcolour4(colour_index BG, colour_index FG);
 
 /*
   Initialize a colour24
@@ -227,7 +227,7 @@ void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
     DARKEN      pick the lowest of two colours for each element
 */
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
-            enum colour_math operation, float blend);
+            colour_math operation, float blend);
 
 // Returns difference between two colours in integer
 int difference24(colour24 colour1, colour24 colour2);
