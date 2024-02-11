@@ -1,1 +1,1 @@
-#define LIBCLRVERSION "v0.1.1-RED"
+#define LIBCLRVERSION "v0.1.2-GREEN"
