@@ -17,9 +17,7 @@ colour4 getbg(colour4 colour) {
   return bg;
 }
 
-colour4 getcolour4(enum colour_index BG, enum colour_index FG) {
-  return 16 * BG + FG;
-}
+colour4 getcolour4(colour_index BG, colour_index FG) { return 16 * BG + FG; }
 
 void newcolour24(colour24 colour) {
   for (int i = 0; i < 8; i++) {
@@ -60,12 +58,12 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
 }
 
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
-            enum colour_math operation, float blend) {
+            colour_math operation, float blend) {
 
   if (operation < 0 || operation > LAST_OPERATION) {
     start4(RED, NOBG);
     printf("colourmods: Illegal operation\n");
-    resetcolour();
+    printf("\033[0m");
     return;
   }
 

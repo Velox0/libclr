@@ -27,7 +27,7 @@ void display8(char *str, colour8 colour);
 */
 void display4(char *str, colour4 colour, CSID control);
 
-inline void resetcolour() { printf("\033[0m"); }
+void resetcolour();
 
 /*
   print colour in gradient with specified specified "step"
