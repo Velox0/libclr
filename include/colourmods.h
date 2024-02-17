@@ -190,9 +190,6 @@ inline void resetfg24(colour24 colour) { colour[FCID] = 0; }
 */
 inline void resetbg24(colour24 colour) { colour[BCID] = 0; }
 
-void interpolate24(colour24 colour, colour24 colour1, colour24 colour2,
-                   float factor);
-
 /*
   Math function
   Takes 3 colour24's:
