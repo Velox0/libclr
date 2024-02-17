@@ -118,7 +118,7 @@ typedef enum {
 } CSID;
 
 /*
-  Remeber that colour4 is just unsigned char
+  Remember that colour4 is just unsigned char
 */
 /*
   colour4 to ANSI colour code translator
@@ -138,7 +138,7 @@ colour4 getfg(colour4 colour);
   Give it a background and foreground colour and it gives a colour4
   for the specified formatting
 
-  Pass it throung getbg and getfg to get the ANSI code
+  Pass it through getbg and getfg to get the ANSI code
 */
 colour4 getcolour4(colour_index BG, colour_index FG);
 
@@ -186,6 +186,11 @@ void setcolour24(colour24 colour, unsigned char BR, unsigned char BG,
 inline void resetfg24(colour24 colour) { colour[FCID] = 0; }
 
 /*
+  conveniently declare colour24 using hex code
+*/
+void hexto24(colour24 colour, const char *hexbg, const char *hexfg);
+
+/*
   Sets BCID to 0
 */
 inline void resetbg24(colour24 colour) { colour[BCID] = 0; }
@@ -194,8 +199,8 @@ inline void resetbg24(colour24 colour) { colour[BCID] = 0; }
   Math function
   Takes 3 colour24's:
     colour      to store output
-    colour1     first oprand
-    colour2     second oprand
+    colour1     first operand
+    colour2     second operand
 
   1 colour_math enum:
     operation   tells math24 which operation to perform.

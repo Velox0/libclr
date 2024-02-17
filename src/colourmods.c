@@ -57,6 +57,43 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
   colour[FCID] = 2;
 }
 
+int _clrstrtol(char ch) {
+  if (ch >= 0 && ch <= 9)
+    return ch - 48;
+  if (ch >= 'A' && ch <= 'F')
+    return ch - 55;
+  if (ch >= 'a' && ch <= 'f')
+    return ch - 87;
+  fprintf(stderr, "error @ _clrstrtol: invalid hex %d\n", ch);
+  return 0;
+}
+
+void _hexto24(colour24 colour, const char *hex, rgb_index offset) {
+  int delta = 0;
+  if (offset == BG)
+    delta = 4;
+
+  int i = 0;
+  if (hex[0] == '#')
+    i++;
+  colour[FR + delta] = 16 * _clrstrtol(hex[i++]);
+  colour[FR + delta] += _clrstrtol(hex[i++]);
+
+  colour[FG + delta] = 16 * _clrstrtol(hex[i++]);
+  colour[FG + delta] += _clrstrtol(hex[i++]);
+
+  colour[FB + delta] = 16 * _clrstrtol(hex[i++]);
+  colour[FB + delta] += _clrstrtol(hex[i]);
+}
+
+void hexto24(colour24 colour, const char *hexbg, const char *hexfg) {
+  if (hexbg != NULL)
+    _hexto24(colour, hexbg, BG);
+
+  if (hexfg != NULL)
+    _hexto24(colour, hexfg, FG);
+}
+
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
             colour_math operation, float blend) {
 
