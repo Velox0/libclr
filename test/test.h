@@ -30,3 +30,5 @@ void setcolour24_test();
 void math24_test();
 
 void start24_test();
+
+void hexto24_test();

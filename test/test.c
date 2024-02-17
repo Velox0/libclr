@@ -8,7 +8,7 @@ static int logerror = 1;
 static FILE *pLog;
 
 int main() {
-  test1.total = 9;
+  test1.total = 10;
   test1.success = 0;
   test1.failure = 0;
 
@@ -32,6 +32,7 @@ int main() {
   setcolour24_test();
   math24_test();
   start24_test();
+  hexto24_test();
 
   fclose(pLog);
 
@@ -175,4 +176,14 @@ void start24_test() {
   printf("\n");
 
   test_log("start24", 4);
+}
+
+void hexto24_test() {
+  colour24 clr, test;
+  newcolour24(clr);
+  hexto24(clr, NULL, "#ffffff");
+  setcolour24(test, 0, 0, 0, 255, 255, 255);
+  int diff = difference24(clr, test);
+
+  test_log("hexto24", diff);
 }
