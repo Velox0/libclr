@@ -24,7 +24,7 @@ void newcolour24(colour24 colour) {
     if (i != BCID && i != FCID)
       colour[i] = 0;
     else
-      colour[i] = 5;
+      colour[i] = 2;
   }
 }
 
@@ -58,7 +58,7 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
 }
 
 int _clrstrtol(char ch) {
-  if (ch >= 0 && ch <= 9)
+  if (ch >= '0' && ch <= '9')
     return ch - 48;
   if (ch >= 'A' && ch <= 'F')
     return ch - 55;
