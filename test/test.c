@@ -181,9 +181,13 @@ void start24_test() {
 void hexto24_test() {
   colour24 clr, test;
   newcolour24(clr);
-  hexto24(clr, NULL, "#ffffff");
-  setcolour24(test, 0, 0, 0, 255, 255, 255);
+  hexto24(clr, NULL, "#ff0000");
+  setcolour24(test, 0, 0, 0, 255, 0, 0);
   int diff = difference24(clr, test);
+  resetbg24(clr);
 
+  start24(clr);
+  printf("test");
+  resetcolour();
   test_log("hexto24", diff);
 }
