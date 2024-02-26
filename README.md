@@ -32,16 +32,10 @@ The errors will be saved in `ERROR.log`
 
 # Installation
 
-In project root:
+In project root run:
 
 ```bash
-mkdir -p lib
-gcc -Wall -shared -fPIC -o lib/libclr.so src/colourmods.c src/display.c -Iinclude
-
-sudo mkdir -p /usr/include/libclr/
-sudo cp ./include/* /usr/include/libclr/
-
-sudo mv ./lib/libclr.so /usr/lib/
+./install
 ```
 
 ## Usage
