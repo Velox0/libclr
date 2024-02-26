@@ -188,7 +188,7 @@ inline void resetfg24(colour24 colour) { colour[FCID] = 0; }
 /*
   conveniently declare colour24 using hex code
 */
-void hexto24(colour24 colour, const char *hexbg, const char *hexfg);
+int hexto24(colour24 colour, const char *hexbg, const char *hexfg);
 
 /*
   Sets BCID to 0

@@ -64,34 +64,54 @@ int _clrstrtol(char ch) {
     return ch - 55;
   if (ch >= 'a' && ch <= 'f')
     return ch - 87;
-  fprintf(stderr, "error @ _clrstrtol: invalid hex %d\n", ch);
-  return 0;
+  // fprintf(stderr, "error @ _clrstrtol: invalid hex %c\n", ch);
+  return -1;
 }
 
-void _hexto24(colour24 colour, const char *hex, rgb_index offset) {
+int _hexto24(colour24 colour, const char *hex, rgb_index offset) {
   int delta = 0;
   if (offset == BG)
     delta = 4;
 
+  int temp;
+
+  // Start of macro
+#define HEXTO24RETURN                                                          \
+  temp = _clrstrtol(hex[i++]);                                                 \
+  if (temp == -1)                                                              \
+    return -1;
+  // End of macro
+
   int i = 0;
   if (hex[0] == '#')
     i++;
-  colour[FR + delta] = 16 * _clrstrtol(hex[i++]);
-  colour[FR + delta] += _clrstrtol(hex[i++]);
 
-  colour[FG + delta] = 16 * _clrstrtol(hex[i++]);
-  colour[FG + delta] += _clrstrtol(hex[i++]);
+  HEXTO24RETURN
+  colour[FR + delta] = 16 * temp;
+  HEXTO24RETURN
+  colour[FR + delta] += temp;
 
-  colour[FB + delta] = 16 * _clrstrtol(hex[i++]);
-  colour[FB + delta] += _clrstrtol(hex[i]);
+  HEXTO24RETURN
+  colour[FG + delta] = 16 * temp;
+  HEXTO24RETURN
+  colour[FG + delta] += temp;
+
+  HEXTO24RETURN
+  colour[FB + delta] = 16 * temp;
+  HEXTO24RETURN
+  colour[FB + delta] += temp;
+  return 0;
 }
 
-void hexto24(colour24 colour, const char *hexbg, const char *hexfg) {
+int hexto24(colour24 colour, const char *hexbg, const char *hexfg) {
+  int status;
   if (hexbg != NULL)
-    _hexto24(colour, hexbg, BG);
+    status = _hexto24(colour, hexbg, BG);
 
   if (hexfg != NULL)
-    _hexto24(colour, hexfg, FG);
+    status = status == -1 ? -1 : _hexto24(colour, hexfg, FG);
+
+  return status;
 }
 
 void math24(colour24 colour, colour24 colour1, colour24 colour2,
