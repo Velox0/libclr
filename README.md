@@ -35,7 +35,7 @@ The errors will be saved in `ERROR.log`
 In project root run:
 
 ```bash
-./install
+./install.sh
 ```
 
 ## Usage
