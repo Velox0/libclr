@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 if [ ! -d ./lib ]; then
     mkdir -p lib
