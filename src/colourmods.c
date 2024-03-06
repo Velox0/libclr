@@ -104,7 +104,7 @@ int _hexto24(colour24 colour, const char *hex, rgb_index offset) {
 }
 
 int hexto24(colour24 colour, const char *hexbg, const char *hexfg) {
-  int status;
+  int status = 0;
   if (hexbg != NULL)
     status = _hexto24(colour, hexbg, BG);
 
