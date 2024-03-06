@@ -198,3 +198,11 @@ int difference24(colour24 colour1, colour24 colour2) {
 float value24(colour24 colour) {
   return (colour[FR] + colour[FG] + colour[FB]) / (255.0f * 3);
 }
+
+colour4 tocolour4(colour24 colour, rgb_index FG_BG) {
+  int delta = 0;
+  if (FG_BG == BG)
+    delta = 4;
+  colour4 result;
+  return result;
+}

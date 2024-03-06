@@ -237,4 +237,7 @@ int difference24(colour24 colour1, colour24 colour2);
 // Returns value of colour24 between 0.0 and 1.0
 float value24(colour24 colour);
 
+// Cconvert colour24 to colour4
+colour4 tocolour4(colour24 colour, rgb_index FG_BG);
+
 #endif
