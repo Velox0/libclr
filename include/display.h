@@ -29,12 +29,6 @@ void display4(char *str, colour4 colour, CSID control);
 
 void resetcolour();
 
-/*
-  print colour in gradient with specified specified "step"
-*/
-
-void step_gradient(colour24 colour, colour24 step);
-
 void start4(colour4 colour, CSID control);
 
 void start24(colour24 colour);
