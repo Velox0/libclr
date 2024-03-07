@@ -180,20 +180,14 @@ void setcolour24(colour24 colour, unsigned char BR, unsigned char BG,
                  unsigned char BB, unsigned char FR, unsigned char FG,
                  unsigned char FB);
 
-/*
-  Sets FCID to 0
-*/
-inline void resetfg24(colour24 colour) { colour[FCID] = 0; }
+// Sets FCID to 0
+void resetfg24(colour24 colour);
 
-/*
-  conveniently declare colour24 using hex code
-*/
+// Sets BCID to 0
+void resetbg24(colour24 colour);
+
+// conveniently declare colour24 using hex code
 int hexto24(colour24 colour, const char *hexbg, const char *hexfg);
-
-/*
-  Sets BCID to 0
-*/
-inline void resetbg24(colour24 colour) { colour[BCID] = 0; }
 
 /*
   Math function

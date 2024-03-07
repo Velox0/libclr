@@ -57,6 +57,10 @@ void setcolour24(colour24 colour, unsigned char _BR, unsigned char _BG,
   colour[FCID] = 2;
 }
 
+inline void resetfg24(colour24 colour) { colour[FCID] = 0; }
+
+inline void resetbg24(colour24 colour) { colour[BCID] = 0; }
+
 int _clrstrtol(char ch) {
   if (ch >= '0' && ch <= '9')
     return ch - 48;
@@ -195,7 +199,7 @@ int difference24(colour24 colour1, colour24 colour2) {
   return diff;
 }
 
-float value24(colour24 colour) {
+inline float value24(colour24 colour) {
   return (colour[FR] + colour[FG] + colour[FB]) / (255.0f * 3);
 }
 
