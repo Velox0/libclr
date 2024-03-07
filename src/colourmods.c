@@ -1,5 +1,6 @@
 #include "../include/colourmods.h"
 #include "../include/display.h"
+#include <complex.h>
 #include <stdio.h>
 #include <stdlib.h>
 /*
@@ -104,6 +105,8 @@ int _hexto24(colour24 colour, const char *hex, rgb_index offset) {
   colour[FB + delta] = 16 * temp;
   HEXTO24RETURN
   colour[FB + delta] += temp;
+
+#undef HEXTO24RETURN
   return 0;
 }
 
@@ -204,10 +207,6 @@ inline float value24(colour24 colour) {
 }
 
 colour4 tocolour4(colour24 colour, rgb_index FG_BG) {
-  int delta = 0;
-  if (FG_BG == BG)
-    delta = 4;
-
   colour24 list[16];
 
   for (int i = 0; i < 16; i++) {
@@ -269,6 +268,6 @@ colour4 tocolour4(colour24 colour, rgb_index FG_BG) {
       smallest = i;
     }
   }
-  printf("%d\n", smallest);
+
   return getcolour4(0, smallest);
 }
