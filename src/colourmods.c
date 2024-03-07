@@ -203,6 +203,68 @@ colour4 tocolour4(colour24 colour, rgb_index FG_BG) {
   int delta = 0;
   if (FG_BG == BG)
     delta = 4;
-  colour4 result;
-  return result;
+
+  colour24 list[16];
+
+  for (int i = 0; i < 16; i++) {
+    newcolour24(list[i]);
+  }
+  /*
+    BLACK: #000000
+    RED: #800000
+    GREEN: #008000
+    YELLOW: #808000
+    BLUE: #000080
+    MAGENTA: #800080
+    CYAN: #008080
+    WHITE: #C0C0C0
+
+    BRIGHT_BLACK: #808080
+    BRIGHT_RED: #FF0000
+    BRIGHT_GREEN: #00FF00
+    BRIGHT_YELLOW: #FFFF00
+    BRIGHT_BLUE: #0000FF
+    BRIGHT_MAGENTA: #FF00FF
+    BRIGHT_CYAN: #00FFFF
+    BRIGHT_WHITE: #FFFFFF
+  */
+
+  char *hex[] = {"000000", "800000", "008000", "808000", "000080", "800080",
+                 "008080", "c0c0c0", "808080", "ff0000", "00ff00", "ffff00",
+                 "0000ff", "ff00ff", "00ffff", "ffffff"};
+
+  for (int i = 0; i < 16; i++) {
+    if (FG_BG == FG)
+      hexto24(list[i], NULL, hex[i]);
+    else
+      hexto24(list[i], hex[i], NULL);
+  }
+
+  colour24 colour2;
+  newcolour24(colour2);
+
+  if (FG_BG == FG)
+    setfgcolour24(colour2, colour[FR], colour[FG], colour[FB]);
+  else
+    setfgcolour24(colour2, colour[BR], colour[BG], colour[BB]);
+
+  int diff[16];
+
+  for (int i = 0; i < 16; i++) {
+    diff[i] = difference24(list[i], colour2);
+  }
+
+  // find the closest match with smallest difference
+  int smallest = 0;
+  for (int i = 1; i < 16; ++i) {
+    if (diff[i] == 0) {
+      smallest = i;
+      break;
+    }
+    if (diff[i] < diff[smallest]) {
+      smallest = i;
+    }
+  }
+  printf("%d\n", smallest);
+  return getcolour4(0, smallest);
 }
