@@ -209,7 +209,7 @@ inline float value24(colour24 colour) {
 colour4 tocolour4(colour24 colour, rgb_index FG_BG) {
   colour24 list[16];
 
-  for (int i = 0; i < 16; i++) {
+  for (int i = BLACK; i <= BRIGHT_WHITE; i++) {
     newcolour24(list[i]);
   }
   /*
@@ -236,7 +236,7 @@ colour4 tocolour4(colour24 colour, rgb_index FG_BG) {
                  "008080", "c0c0c0", "808080", "ff0000", "00ff00", "ffff00",
                  "0000ff", "ff00ff", "00ffff", "ffffff"};
 
-  for (int i = 0; i < 16; i++) {
+  for (int i = BLACK; i <= BRIGHT_WHITE; i++) {
     if (FG_BG == FG)
       hexto24(list[i], NULL, hex[i]);
     else
@@ -253,7 +253,7 @@ colour4 tocolour4(colour24 colour, rgb_index FG_BG) {
 
   int diff[16];
 
-  for (int i = 0; i < 16; i++) {
+  for (int i = BLACK; i <= BRIGHT_WHITE; i++) {
     diff[i] = difference24(list[i], colour2);
   }
 
