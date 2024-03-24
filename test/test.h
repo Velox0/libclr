@@ -1,5 +1,6 @@
 #include "../include/colourmods.h"
 #include "../include/display.h"
+#include "../include/version.h"
 
 // TEST VARIABLES
 
@@ -32,3 +33,5 @@ void math24_test();
 void start24_test();
 
 void hexto24_test();
+
+void tocolour4_test();

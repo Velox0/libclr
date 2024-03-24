@@ -1,4 +1,5 @@
 #include "test.h"
+#include <libclr/colourmods.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <threads.h>
@@ -8,7 +9,7 @@ static int logerror = 1;
 static FILE *pLog;
 
 int main() {
-  test1.total = 10;
+  test1.total = 11;
   test1.success = 0;
   test1.failure = 0;
 
@@ -26,6 +27,8 @@ int main() {
     exit(1);
   }
 
+  printf("\n\nLIBCLR VERSION " LIBCLRVERSION "\n________________________\n");
+
   getbg_test();
   getfg_test();
   getcolour4_test();
@@ -33,6 +36,7 @@ int main() {
   math24_test();
   start24_test();
   hexto24_test();
+  tocolour4_test();
 
   fclose(pLog);
 
@@ -188,4 +192,21 @@ void hexto24_test() {
   // printf("test");
   // resetcolour();
   test_log("hexto24", diff);
+}
+
+void tocolour4_test() {
+  colour24 og;
+  newcolour24(og);
+  resetbg24(og);
+  hexto24(og, NULL, "ff7000");
+  start24(og);
+  printf("Base");
+  resetcolour();
+  printf("\n");
+
+  colour4 maybe_og = tocolour4(og, FG);
+  start4(maybe_og, NOBG);
+  printf("TEST");
+  resetcolour();
+  printf("\n");
 }
